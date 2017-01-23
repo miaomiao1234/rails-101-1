@@ -7,7 +7,7 @@ end
 
 def show
   @group = Group.find(params[:id])
-  @posts = @group.posts.recent("created_at DESC ")
+  @posts = @group.posts.recent.paginate(:page => params[:page], :per_page => 5)
 
 end
 
