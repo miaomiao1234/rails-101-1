@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123003423) do
+ActiveRecord::Schema.define(version: 20170124014725) do
+
+  create_table "group_relationships", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "title"
@@ -18,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170123003423) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+  end
+
+  create_table "gs", force: :cascade do |t|
+    t.string   "model"
+    t.string   "group_relationship"
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "posts", force: :cascade do |t|
